@@ -2,7 +2,7 @@ package grocery_sorte;
 
 
 // Java implementation of Counting Sort
-class CountingSort {
+public class CountingSort {
     void sort(char arr[])
     {
         int n = arr.length;
@@ -60,17 +60,22 @@ class CountingSort {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
  
-    // Driver method
-    public static void main(String args[])
-    {
-        CountingSort ob = new CountingSort();
-        char arr[] = { 'g', 'e', 'e', 'k', 's', 'f', 'o',
-                       'r', 'g', 'e', 'e', 'k', 's' };
+    /*******************************************************************************
+     * Do not uncommet this, the Driver method got moved inside StoreDriver.java
+     * ****************************************************************************
+     */
+    // // Driver method
+    // public static void main(String args[])
+    // {
+    //     CountingSort ob = new CountingSort();
+    //     char arr[] = { 'g', 'e', 'e', 'k', 's', 'f', 'o',
+    //                    'r', 'g', 'e', 'e', 'k', 's' };
  
-        ob.sort(arr);
+    //     ob.sort(arr);
  
-        System.out.print("Sorted character array is ");
-        for (int i = 0; i < arr.length; ++i)
-            System.out.print(arr[i]);
-    }
+    //     System.out.print("Sorted character array is ");
+    //     for (int i = 0; i < arr.length; ++i)
+    //         System.out.print(arr[i]);
+    // }
+    /******************************************************************************/
 }
