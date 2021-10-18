@@ -1,7 +1,7 @@
 package grocery_sorte;
 //import java.util.Scanner;
 
-public class Store {
+public class Store implements Platform {
     //Maximum amount of items in the Store
     final int MAX_SIZE = 500;
 
@@ -52,5 +52,8 @@ public class Store {
         //7 7
     }//end of Store constructor with no parameters
 
-    
+    // public Items findItem(){
+    //     return;
+    // }
+
 }//end of Store class
