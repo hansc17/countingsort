@@ -16,7 +16,7 @@ public class Items {
     public void Details(){
         System.out.println("\nItem: " +this.name);
         System.out.println("Located between node: " + this.enterNode + " and " + this.exitNode);
-        System.out.println("Section: " + this.section);
+        System.out.println("Section: " + this.section + "\n");
     }//end of Details() method
 
 
