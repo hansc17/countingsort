@@ -12,12 +12,27 @@ public class Items {
         this.exitNode = exitNode;
         this.section = section;
     }//end of Items constructor with 2 parameters
+
+    public void setEnterNode(int n) {
+        this.enterNode = n;
+    }//end of setEnterNode()
+
+    public void setExitNode(int n) {
+        this.exitNode = n;
+    }//end of setExitNode()
+
+    public int getEnterNode() {
+        return enterNode;
+    }//end of getEnterNode()
+
+    public int getExitNode() {
+        return exitNode;
+    }//end of getExitNode()
     
-    public void Details(){
+    public void details(){
         System.out.println("\nItem: " +this.name);
         System.out.println("Located between node: " + this.enterNode + " and " + this.exitNode);
         System.out.println("Section: " + this.section + "\n");
-    }//end of Details() method
-
+    }//end of details() method
 
 }//end of Items class
