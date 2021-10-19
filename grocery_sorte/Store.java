@@ -196,7 +196,8 @@ public class Store implements Platform {
         count = 0;
         for (int i = 0; i < item1.length; i++) {
             item1[i].details();
-            if((count % 2) == 0) count++;
+            if((count % 3) == 0) count++;
+            count++;
         }
         count += 5;//Add 5 mins for checkout
 
