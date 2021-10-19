@@ -21,12 +21,16 @@ public class Items {
         this.exitNode = n;
     }//end of setExitNode()
 
+    public String getName() {
+        return this.name;
+    }//end of getEnterNode()
+
     public int getEnterNode() {
-        return enterNode;
+        return this.enterNode;
     }//end of getEnterNode()
 
     public int getExitNode() {
-        return exitNode;
+        return this.exitNode;
     }//end of getExitNode()
     
     public void details(){

@@ -1,5 +1,5 @@
 package grocery_sorte;
-//import java.util.Scanner;
+import java.util.Scanner;
 
 public class Store implements Platform {
     //Maximum amount of items in the Store
@@ -10,6 +10,7 @@ public class Store implements Platform {
     String[] list;//contains a list of all the items offered within the store
     int[] aisles;//the nodes of the entrnce and exits of the aisles
     Items[] items;//the list of items locations in the store
+    Items[] item1;
 
     String storeName;
     public Store() {
@@ -109,7 +110,7 @@ public class Store implements Platform {
 
     }//end of Store constructor with no parameters
 
-    public Items[] sort(Items[] arr, int amount)
+    public void sort(Items[] arr, int amount)
     {
         int n = arr.length;
  
@@ -118,8 +119,8 @@ public class Store implements Platform {
  
         // Create a count array to store count of individual
         // characters and initialize count array as 0
-        int count[] = new int[amount];
-        for (int i = 0; i < amount; ++i) {
+        int count[] = new int[n];
+        for (int i = 0; i < n; ++i) {
             count[i] = 0;
         }
  
@@ -135,7 +136,7 @@ public class Store implements Platform {
 
         // Change count[i] so that count[i] now contains actual
         // position of this character in output array
-        for (int i = 1; i <= 255; ++i) {
+        for (int i = 1; i <= n-1; ++i) {
             count[i] += count[i - 1];
         }
 
@@ -144,10 +145,10 @@ public class Store implements Platform {
         // Build the output character array
         // To make it stable we are operating in reverse order.
         for (int i = n - 1; i >= 0; i--) {
-            output[count[arr[i].getEnterNode()] - 1] = arr[i];
+            output[count[i] - 1] = arr[i];
             //System.out.println(output[i]);
 
-            --count[arr[i].getEnterNode()];
+            --count[i];
 
             //System.out.println(arr[i]);
         }
@@ -157,28 +158,67 @@ public class Store implements Platform {
         // Copy the output array to arr, so that arr now
         // contains sorted characters
         for (int i = 0; i < n; ++i) {
-            arr[i] = output[i];
+            item1[i] = output[i];
 
             System.out.println(arr[i]);
         }
-        return arr;
         //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }//end of sort() method with 1 parameter
     
-    public void path(Items[] arr, int amount){
-        Items[] path = sort(arr, amount);
+    public void path(){
+        Scanner in = new Scanner(System.in);
+        int amount = 0;
+        System.out.println();
+        System.out.println("How many types of items are you looking for?\n\nThe items offered are:\n");
+        for(int i = 0; i < list.length; i++){
+            System.out.println(list[i]);
+        }
+        System.out.println("Please type exactly how many items as an integer > 0:");
+        amount = in.nextInt();
+        String[] cart = new String[amount];
+
+        System.out.println("\nWhat items do you want to add to the list?\nPlease type exactly how the item is spelled:");
+
+        boolean check = false;
+        int count = 0;
+        String read = "";
+        while(count < amount){
+            read = in.nextLine();
+            for(int i = 0; i < list.length; i++){
+                if(read.equals(list[i]) && !check){
+                    check = true;
+                }
+            }
+            if(check) {
+                cart[count] = read;
+                count++;
+            }else {
+                System.out.println("That is not a item offered.\nPlease type exactly how the item is spelled from the list:");
+            }            
+        }
+
+        Items[] arr = new Items[amount];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < items.length; j++) {
+                if(cart[i].equals(items[j].getName())){
+                    arr[i] = items[j];
+                }
+            }
+        }
+        item1 = new Items[amount];
+        sort(arr, amount);
 
         //Now to check for the time
-        int count = 0;
-        for (int i = 0; i < path.length; i++) {
-            path[i].details();
+        count = 0;
+        for (int i = 0; i < item1.length; i++) {
+            item1[i].details();
             count++;
             if((count % 2) == 0) count++;
         }
         count += 5;//Add 5 mins for checkout
 
         System.out.println("It will take an approximate" + count + "minutes to complete this trip");
-
+        in.close();
     }
 
     public String[] getList() {
