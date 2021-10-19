@@ -6,6 +6,7 @@ public class Store implements Platform {
     final int MAX_SIZE = 500;
 
     String[] items;//contains all the items offered within the store
+    int[] aisles;//the nodes of the entrnce and exits of the aisles
 
     String storeName;
     public Store() {
@@ -50,10 +51,16 @@ public class Store implements Platform {
         items[66] = "Baguette";
         /*************************end of breads*************************************************/ 
         //7 7
+
+        aisles = new int[59];//nodes located around the map, see map for details
+        
     }//end of Store constructor with no parameters
 
     // public Items findItem(){
     //     return;
     // }
 
+    public String[] getAllItems() {
+        return this.items;
+    }//end of getAllItems() method
 }//end of Store class
